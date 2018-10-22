@@ -1,3 +1,8 @@
+let isClockDisabled = true;
+let time = 0;
+let clockID;
+const clockSpan = document.querySelector('.clock');
+console.log(clockSpan);
 /*
  * Create a list that holds all of your cards
  */
@@ -67,6 +72,11 @@ deck.addEventListener('click', e => {
         !clicked.classList.contains('match')) {
         console.log('It\'s-a me, card-io');
         toggleCardState(clicked);
+        if (isClockDisabled === true) {
+            startClock();
+            isClockDisabled = false;
+            console.log('Time\'s ticking, mate!');
+        }
         if (clickedCards.length === 2) {
             console.log('Checking if cards match');
             checkIfMatched();
@@ -129,4 +139,22 @@ function queryScore() {
 function removeStar() {
     let stars = Array.from(document.querySelectorAll('.stars i'));
     stars[stars.length - 1].remove();
+}
+
+function startClock() {
+    clockID = setInterval(() => {
+        time++;
+        console.log(time);
+        displayTime();
+    }, 1000);
+}
+
+function displayTime() {
+    let minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+    seconds < 10 ? clockSpan.textContent = `${minutes}:0${seconds}` : clockSpan.textContent = `${minutes}:${seconds}`;
+}
+
+function stopClock() {
+    clearInterval(clockID);
 }
