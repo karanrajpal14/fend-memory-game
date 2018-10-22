@@ -55,6 +55,10 @@ function shuffle(array) {
 
 let clickedCards = [];
 
+const movesSpan = document.querySelector('.moves')
+let noOfMoves = 0;
+movesSpan.textContent = noOfMoves;
+
 deck.addEventListener('click', e => {
     const clicked = e.target;
     if (clicked.classList.contains('card') &&
@@ -66,6 +70,7 @@ deck.addEventListener('click', e => {
         if (clickedCards.length === 2) {
             console.log('Checking if cards match');
             checkIfMatched();
+            incrementNoOfMoves();
         }
 
     } else {
@@ -107,4 +112,9 @@ function checkIfMatched() {
         console.log('Same same, but different');
         resetCards();
     }
+}
+
+function incrementNoOfMoves() {
+    noOfMoves++;
+    movesSpan.textContent = noOfMoves;
 }
