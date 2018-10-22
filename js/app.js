@@ -5,12 +5,15 @@ let time = 0;
 let clockID;
 let clickedCards = [];
 let noOfMoves = 0;
+let matchedCards = 0;
 
 const clockSpan = document.querySelector('.clock');
 console.log(clockSpan);
 
 const movesSpan = document.querySelector('.moves');
 console.log(movesSpan);
+
+const starHTML = '<i class="fa fa-star fa-lg has-text-warning"></i>';
 
 /*
  * Create a list that holds all of your cards
@@ -20,6 +23,8 @@ console.log(deck);
 
 const allCards = Array.from(deck.querySelectorAll('.card'));
 console.log(allCards);
+
+const TOTAL_MATCH_PAIRS = allCards.length / 2;
 
 /*
  * Display the cards on the page
@@ -121,6 +126,10 @@ function checkIfMatched() {
         firstCard.classList.toggle('match');
         secondCard.classList.toggle('match');
         clickedCards = [];
+        matchedCards++;
+        if(matchedCards === TOTAL_MATCH_PAIRS){
+            gameOver();
+        }
     } else {
         console.log('Same same, but different');
         resetCards();
@@ -183,6 +192,12 @@ function getStars(){
         starCount++;
     });
     return starCount;
+}
+
+function gameOver(){
+    stopClock();
+    pushGameState();
+    toggleModal();
 }
 
 function replayGame(){
