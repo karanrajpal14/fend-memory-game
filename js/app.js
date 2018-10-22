@@ -44,14 +44,27 @@ function shuffle(array) {
 
 const deck = document.querySelector('.deck');
 console.log(deck);
+let clickedCards = [];
+
 deck.addEventListener('click', e => {
     const clicked = e.target;
     if(clicked.classList.contains('card'))
     {
         console.log('It\'s-a me, card-io');
-        clicked.classList.toggle('open');
-        clicked.classList.toggle('show');
+        toggleCardState(clicked);
+
     } else {
         console.log('It\'s a me, card-iac arrest');
     }
 });
+
+function toggleCardState(clickedCard) {
+    clickedCard.classList.toggle('open');
+    clickedCard.classList.toggle('show');
+    pushCardState(clickedCard);
+}
+
+function pushCardState(clickedCard) {
+    clickedCards.push(clickedCard);
+    console.log('Clicked cards - ' + clickedCards);
+}
