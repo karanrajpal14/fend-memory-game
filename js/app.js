@@ -71,6 +71,7 @@ deck.addEventListener('click', e => {
             console.log('Checking if cards match');
             checkIfMatched();
             incrementNoOfMoves();
+            queryScore();
         }
 
     } else {
@@ -117,4 +118,15 @@ function checkIfMatched() {
 function incrementNoOfMoves() {
     noOfMoves++;
     movesSpan.textContent = noOfMoves;
+}
+
+function queryScore() {
+    if (noOfMoves === 16 || noOfMoves === 24 || noOfMoves === 32) {
+        removeStar();
+    }
+}
+
+function removeStar() {
+    let stars = Array.from(document.querySelectorAll('.stars i'));
+    stars[stars.length - 1].remove();
 }

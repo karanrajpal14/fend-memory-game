@@ -94,6 +94,7 @@ h1 {
 .score-panel .stars {
     margin: 0;
     padding: 0;
+    padding-left: 1em;
     display: inline-block;
     margin: 0 5px 0 0;
 }
