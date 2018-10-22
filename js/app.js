@@ -160,3 +160,48 @@ function displayTime() {
 function stopClock() {
     clearInterval(clockID);
 }
+const modalDiv = document.querySelector('.modal');
+
+function toggleModal(){
+    modalDiv.classList.toggle('is-active');
+}
+
+function pushGameState() {
+    const gameTime = document.querySelector('#game_time');
+    const gameRating = document.querySelector('#game_rating');
+    const gameMoves = document.querySelector('#game_moves');
+
+    gameTime.textContent = `Time: ${clockSpan.textContent}`;
+    gameMoves.textContent = `Moves: ${movesSpan.textContent}`;
+    gameRating.textContent = `Stars: ${getStars()}`;
+}
+
+function getStars(){
+    starCount = 0;
+    let currentstarCount = document.querySelectorAll('.stars i');
+    currentstarCount.forEach(() => {
+        starCount++;
+    });
+    return starCount;
+}
+
+function replayGame(){
+    // Kill time
+    stopClock();
+    isClockDisabled = true;
+    time = 0;
+    displayTime();
+
+    // Reset moves
+    moves = 0;
+    movesSpan.textContent = moves;
+
+    // Reset stars
+    stars = 0;
+    document.querySelectorAll('.stars li').forEach(listItem => {
+        listItem.innerHTML = starHTML;
+    });
+
+    // Cancel modal
+    modalDiv.classList.remove('is-active');
+}

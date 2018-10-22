@@ -5,7 +5,7 @@
     <title>Matching Game</title>
     <meta name="description" content="">
     <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
     <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
@@ -83,6 +83,25 @@
         </ul>
     </div>
 
+    <div class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Game over!</p>
+      <button class="delete" aria-label="close" onclick="javascript:toggleModal();"></button>
+    </header>
+    <section class="modal-card-body">
+        <p id="game_time">Time:</p>
+        <p id="game_rating">Stars:</p>
+        <p id="game_moves">Moves:</p>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success" onclick="javascript:toggleModal()">Okay</button>
+      <button class="button is-danger" onclick="javascript:replayGame()">Restart</button>
+    </footer>
+  </div>
+</div>
+        </div>
     <script src="js/app.js"></script>
 </body>
 </html>
