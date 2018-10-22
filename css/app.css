@@ -18,10 +18,9 @@ body {
 
 body {
     background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
-    font-family: 'Coda', cursive;
 }
 
-.container {
+.deck_container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -84,12 +83,6 @@ h1 {
 /*
  * Styles for the Score Panel
  */
-
-.score-panel {
-    text-align: left;
-    width: 345px;
-    margin-bottom: 10px;
-}
 
 .score-panel .stars {
     margin: 0;

@@ -10,27 +10,52 @@
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1>Matching Game</h1>
-        </header>
+    <section class="section">
+        <div class="container">
+            <header>
+                <h1 class="title has-text-centered">Matching Game</h1>
+            </header>
+    
+            <section class="section score-panel">
+                <nav class="level">
+                    <div class="level-item has-text-centered">
+                        <div>
+                            <p class="heading">Moves</p>
+                            <p class="title moves">0</p>
+                        </div>
+                    </div>
+                    <div class="level-item has-text-centered">
+                        <div>
+                            <p class="heading">Time</p>
+                            <p class="title clock">00:00</p>
+                        </div>
+                    </div>
+                    <div class="level-item has-text-centered">
+                        <div>
+                            <p class="heading">Stars</p>
+                            <ul class="stars">
+                                <li><i class="fa fa-star fa-lg has-text-warning"></i></li>
+                                <li><i class="fa fa-star fa-lg has-text-warning"></i></li>
+                                <li><i class="fa fa-star fa-lg has-text-warning"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="level-item has-text-centered">
+                        <div>
+                            <p class="heading">Restart</p>
+                            <span class="icon is-large has-text-danger">
+                                <i class="fa fa-redo fa-2x" onclick="javascript:replayGame();"></i>
+                            </span>
+                        </div>
+                    </div>
+                </nav>
+            </section>
+    
+        </div>
+    </section>
 
-        <section class="score-panel">
-            <span class="moves">0</span> Moves
-
-        	<ul class="stars">
-        		<li><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
-        	</ul>
-
-            <span class="clock">00:00</span>   
-
-            <div class="restart">
-        		<i class="fa fa-repeat"></i>
-        	</div>
-        </section>
-
+    <div class="deck_container">
+        
         <ul class="deck">
             <li class="card">
                 <i class="fa fa-gem"></i>
