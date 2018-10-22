@@ -8,36 +8,17 @@ let noOfMoves = 0;
 let matchedCards = 0;
 
 const clockSpan = document.querySelector('.clock');
-console.log(clockSpan);
-
 const movesSpan = document.querySelector('.moves');
-console.log(movesSpan);
-
 const starHTML = '<i class="fa fa-star fa-lg has-text-warning"></i>';
-
 const modalDiv = document.querySelector('.modal');
-
-/*
- * Create a list that holds all of your cards
- */
 const deck = document.querySelector('.deck');
-console.log(deck);
-
 const allCards = Array.from(deck.querySelectorAll('.card'));
-console.log(allCards);
-
 const TOTAL_MATCH_PAIRS = allCards.length / 2;
 
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
-
+// Shuffling all cards
 const shuffledDeck = shuffle(allCards);
-console.log(shuffledDeck);
 
+// Adding shuffled cards to deck
 shuffledDeck.forEach(card => {
     deck.appendChild(card);
 });
@@ -58,17 +39,6 @@ function shuffle(array) {
 }
 
 /*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
-
-/*
     Added a delegated event listener to the deck instead of 
     separate listeners for each card
 */
@@ -87,7 +57,6 @@ deck.addEventListener('click', e => {
             console.log('Time\'s ticking, mate!');
         }
         if (clickedCards.length === 2) {
-            console.log('Checking if cards match');
             checkIfMatched();
             incrementNoOfMoves();
             queryScore();
@@ -98,26 +67,10 @@ deck.addEventListener('click', e => {
     }
 });
 
-function toggleCardState(clickedCard) {
+function showCard(clickedCard) {
     clickedCard.classList.toggle('open');
     clickedCard.classList.toggle('show');
-    pushCardState(clickedCard);
-}
-
-function pushCardState(clickedCard) {
     clickedCards.push(clickedCard);
-    console.log('Clicked cards - ' + clickedCards);
-}
-
-function resetCards() {
-    console.log(clickedCards);
-    setTimeout(() => {
-        clickedCards.forEach(element => {
-            console.log(element);
-            toggleCardState(element);
-        });
-        clickedCards = [];
-    }, 1000);
 }
 
 function checkIfMatched() {
@@ -144,7 +97,7 @@ function incrementNoOfMoves() {
 }
 
 function queryScore() {
-    if (noOfMoves === 16 || noOfMoves === 24 || noOfMoves === 32) {
+    if (noOfMoves === 16 || noOfMoves === 24) {
         removeStar();
     }
 }
@@ -154,10 +107,19 @@ function removeStar() {
     stars[stars.length - 1].remove();
 }
 
+// Reset cards after both are shown and not matched
+function resetCards() {
+    setTimeout(() => {
+        clickedCards.forEach(card => {
+            showCard(card);
+        });
+        clickedCards = [];
+    }, 1000);
+}
+
 function startClock() {
     clockID = setInterval(() => {
         time++;
-        console.log(time);
         displayTime();
     }, 1000);
 }
@@ -219,6 +181,7 @@ function replayGame() {
         listItem.innerHTML = starHTML;
     });
 
+    // Reset shown cards
     document.querySelectorAll('.deck li').forEach(card => {
         card.className = 'card';
     });
