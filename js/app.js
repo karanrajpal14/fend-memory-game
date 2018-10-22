@@ -48,14 +48,13 @@ let clickedCards = [];
 
 deck.addEventListener('click', e => {
     const clicked = e.target;
-    if( clicked.classList.contains('card') && 
+    if (clicked.classList.contains('card') &&
         clickedCards.length < 2 &&
         !clickedCards.includes(clicked) &&
-        !clicked.classList.contains('match'))
-    {
+        !clicked.classList.contains('match')) {
         console.log('It\'s-a me, card-io');
         toggleCardState(clicked);
-        if(clickedCards.length === 2){
+        if (clickedCards.length === 2) {
             console.log('Checking if cards match');
             checkIfMatched();
         }
@@ -76,7 +75,7 @@ function pushCardState(clickedCard) {
     console.log('Clicked cards - ' + clickedCards);
 }
 
-function resetCards(){
+function resetCards() {
     console.log(clickedCards);
     setTimeout(() => {
         clickedCards.forEach(element => {
@@ -87,10 +86,10 @@ function resetCards(){
     }, 1000);
 }
 
-function checkIfMatched(){
+function checkIfMatched() {
     const firstCard = clickedCards[0];
     const secondCard = clickedCards[1];
-    if(firstCard.firstElementChild.className === secondCard.firstElementChild.className){
+    if (firstCard.firstElementChild.className === secondCard.firstElementChild.className) {
         console.log('Ayy, same pinch :P');
         firstCard.classList.toggle('match');
         secondCard.classList.toggle('match');
