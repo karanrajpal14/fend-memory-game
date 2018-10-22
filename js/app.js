@@ -48,10 +48,14 @@ let clickedCards = [];
 
 deck.addEventListener('click', e => {
     const clicked = e.target;
-    if(clicked.classList.contains('card'))
+    if(clicked.classList.contains('card') && clickedCards.length < 2)
     {
         console.log('It\'s-a me, card-io');
         toggleCardState(clicked);
+        if(clickedCards.length === 2){
+            console.log('Time to reset');
+            resetCards();
+        }
 
     } else {
         console.log('It\'s a me, card-iac arrest');
@@ -67,4 +71,13 @@ function toggleCardState(clickedCard) {
 function pushCardState(clickedCard) {
     clickedCards.push(clickedCard);
     console.log('Clicked cards - ' + clickedCards);
+}
+
+function resetCards(){
+    console.log(clickedCards);
+    clickedCards.forEach(element => {
+        console.log(element);
+        toggleCardState(element);
+    });
+    clickedCards = [];
 }
