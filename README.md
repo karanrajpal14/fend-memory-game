@@ -1,20 +1,15 @@
 # Memory Game Project
 
-## Table of Contents
+A typical memory game that consists of a 4X4 grid of FontAwesome icons. Has basic functionality such as:
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+- Keeping track of the number of moves
+- Displaying a star rating depending on the number of moves
+- A timer to track the time it takes to complete the game
+- An option to reset the game
 
-## Instructions
+This is the second project for Udacity's Frontend Developer Nanodegree and was built as to amalgamate the skills learned thus far.
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+## Dependencies
 
-To get started, open `js/app.js` and start building out the app's functionality
-
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
-
-## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+1. Font Awesome v5.4.1
+2. Bulma CSS v0.7.2
