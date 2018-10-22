@@ -172,6 +172,7 @@ function stopClock() {
 const modalDiv = document.querySelector('.modal');
 
 function toggleModal(){
+    pushGameState();
     modalDiv.classList.toggle('is-active');
 }
 
