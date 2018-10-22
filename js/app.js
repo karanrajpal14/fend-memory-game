@@ -15,6 +15,8 @@ console.log(movesSpan);
 
 const starHTML = '<i class="fa fa-star fa-lg has-text-warning"></i>';
 
+const modalDiv = document.querySelector('.modal');
+
 /*
  * Create a list that holds all of your cards
  */
@@ -127,7 +129,7 @@ function checkIfMatched() {
         secondCard.classList.toggle('match');
         clickedCards = [];
         matchedCards++;
-        if(matchedCards === TOTAL_MATCH_PAIRS){
+        if (matchedCards === TOTAL_MATCH_PAIRS) {
             gameOver();
         }
     } else {
@@ -169,9 +171,8 @@ function displayTime() {
 function stopClock() {
     clearInterval(clockID);
 }
-const modalDiv = document.querySelector('.modal');
 
-function toggleModal(){
+function toggleModal() {
     pushGameState();
     modalDiv.classList.toggle('is-active');
 }
@@ -186,7 +187,7 @@ function pushGameState() {
     gameRating.textContent = `Stars: ${getStars()}`;
 }
 
-function getStars(){
+function getStars() {
     starCount = 0;
     let currentstarCount = document.querySelectorAll('.stars i');
     currentstarCount.forEach(() => {
@@ -195,13 +196,13 @@ function getStars(){
     return starCount;
 }
 
-function gameOver(){
+function gameOver() {
     stopClock();
     pushGameState();
     toggleModal();
 }
 
-function replayGame(){
+function replayGame() {
     // Kill time
     stopClock();
     isClockDisabled = true;
