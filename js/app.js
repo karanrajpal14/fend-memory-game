@@ -1,7 +1,18 @@
 /*
  * Create a list that holds all of your cards
  */
+const deck = document.querySelector('.deck');
+console.log(deck);
 
+const allCards = Array.from(deck.querySelectorAll('.card'));
+console.log(allCards);
+
+const shuffledDeck = shuffle(allCards);
+console.log(shuffledDeck);
+
+shuffledDeck.forEach(card => {
+    deck.appendChild(card);
+});
 
 /*
  * Display the cards on the page
@@ -42,8 +53,6 @@ function shuffle(array) {
     separate listeners for each card
 */
 
-const deck = document.querySelector('.deck');
-console.log(deck);
 let clickedCards = [];
 
 deck.addEventListener('click', e => {
