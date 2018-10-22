@@ -36,3 +36,22 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+/*
+    Added a delegated event listener to the deck instead of 
+    separate listeners for each card
+*/
+
+const deck = document.querySelector('.deck');
+console.log(deck);
+deck.addEventListener('click', e => {
+    const clicked = e.target;
+    if(clicked.classList.contains('card'))
+    {
+        console.log('It\'s-a me, card-io');
+        clicked.classList.toggle('open');
+        clicked.classList.toggle('show');
+    } else {
+        console.log('It\'s a me, card-iac arrest');
+    }
+});
