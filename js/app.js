@@ -1,8 +1,17 @@
+// Global variables
+
 let isClockDisabled = true;
 let time = 0;
 let clockID;
+let clickedCards = [];
+let noOfMoves = 0;
+
 const clockSpan = document.querySelector('.clock');
 console.log(clockSpan);
+
+const movesSpan = document.querySelector('.moves');
+console.log(movesSpan);
+
 /*
  * Create a list that holds all of your cards
  */
@@ -12,19 +21,19 @@ console.log(deck);
 const allCards = Array.from(deck.querySelectorAll('.card'));
 console.log(allCards);
 
-const shuffledDeck = shuffle(allCards);
-console.log(shuffledDeck);
-
-shuffledDeck.forEach(card => {
-    deck.appendChild(card);
-});
-
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
+
+const shuffledDeck = shuffle(allCards);
+console.log(shuffledDeck);
+
+shuffledDeck.forEach(card => {
+    deck.appendChild(card);
+});
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -41,7 +50,6 @@ function shuffle(array) {
     return array;
 }
 
-
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -57,12 +65,6 @@ function shuffle(array) {
     Added a delegated event listener to the deck instead of 
     separate listeners for each card
 */
-
-let clickedCards = [];
-
-const movesSpan = document.querySelector('.moves')
-let noOfMoves = 0;
-movesSpan.textContent = noOfMoves;
 
 deck.addEventListener('click', e => {
     const clicked = e.target;
