@@ -217,6 +217,10 @@ function replayGame(){
         listItem.innerHTML = starHTML;
     });
 
+    document.querySelectorAll('.deck li').forEach(card => {
+        card.className = 'card';
+    });
+
     // Cancel modal
     modalDiv.classList.remove('is-active');
 }
