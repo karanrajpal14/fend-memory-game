@@ -15,13 +15,17 @@ const deck = document.querySelector('.deck');
 const allCards = Array.from(deck.querySelectorAll('.card'));
 const TOTAL_MATCH_PAIRS = allCards.length / 2;
 
-// Shuffling all cards
-const shuffledDeck = shuffle(allCards);
+shuffledDeck(allCards);
 
-// Adding shuffled cards to deck
-shuffledDeck.forEach(card => {
-    deck.appendChild(card);
-});
+function shuffleDeck(allCards) {
+    // Shuffling all cards
+    const shuffledDeck = shuffle(allCards);
+
+    // Adding shuffled cards to deck
+    shuffledDeck.forEach(card => {
+        deck.appendChild(card);
+    });
+}
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -185,6 +189,8 @@ function replayGame() {
     document.querySelectorAll('.deck li').forEach(card => {
         card.className = 'card';
     });
+
+    shuffleDeck(allCards);
 
     // Cancel modal
     modalDiv.classList.remove('is-active');
