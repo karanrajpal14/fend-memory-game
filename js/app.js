@@ -15,7 +15,7 @@ const deck = document.querySelector('.deck');
 const allCards = Array.from(deck.querySelectorAll('.card'));
 const TOTAL_MATCH_PAIRS = allCards.length / 2;
 
-shuffledDeck(allCards);
+shuffleDeck(allCards);
 
 function shuffleDeck(allCards) {
     // Shuffling all cards
@@ -29,7 +29,7 @@ function shuffleDeck(allCards) {
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    let currentIndex = array.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
