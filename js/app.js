@@ -50,7 +50,7 @@ deck.addEventListener('click', e => {
         !clickedCards.includes(clicked) &&
         !clicked.classList.contains('match')) {
         console.log('It\'s-a me, card-io');
-        toggleCardState(clicked);
+        showCard(clicked);
         if (isClockDisabled === true) {
             startClock();
             isClockDisabled = false;
