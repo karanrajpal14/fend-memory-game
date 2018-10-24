@@ -61,8 +61,8 @@ deck.addEventListener('click', e => {
             console.log('Time\'s ticking, mate!');
         }
         if (clickedCards.length === 2) {
-            checkIfMatched();
             incrementNoOfMoves();
+            checkIfMatched();
             queryScore();
         }
 
@@ -87,6 +87,7 @@ function checkIfMatched() {
         clickedCards = [];
         matchedCards++;
         if (matchedCards === TOTAL_MATCH_PAIRS) {
+            pushGameState();
             gameOver();
         }
     } else {
@@ -139,7 +140,6 @@ function stopClock() {
 }
 
 function toggleModal() {
-    pushGameState();
     modalDiv.classList.toggle('is-active');
 }
 
@@ -164,7 +164,6 @@ function getStars() {
 
 function gameOver() {
     stopClock();
-    pushGameState();
     toggleModal();
 }
 
